@@ -6,6 +6,6 @@ creation:
 decoding:
     1. takes the image and turns it into an array
     2. unsalts it using your key to find where the salt is (not functional)
-    3. totals all of the rgb values
+    3. totals all of the rgb values (and some other operations)
     4. converts to hexadecimal
     5. your key is either added or subtracted depending on index (letters wrap around to hex values if they are q or further)
