@@ -6,8 +6,7 @@ import socket as s
 def getkey():    
     return s.gethostname()
 
-def wrap_hex_dict():
-    return {
+wraparound_hex = {
         "a": "0",
         "b": "1",
         "c": "2",
@@ -36,4 +35,12 @@ def wrap_hex_dict():
         "z": "9",
         "-": "a"
     }
+
+def wrap_hex(phrase):
+    phrase = phrase.lower()
+    new_phrase = phrase
+    for i in phrase:
+        if i in wraparound_hex:
+            new_phrase = new_phrase.replace(i, wraparound_hex[i])
+    return new_phrase
 
