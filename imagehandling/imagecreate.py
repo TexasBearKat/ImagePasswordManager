@@ -7,4 +7,4 @@ def create_image(name, image_type, height, width):
     image = Image.fromarray(pixels)
     image.save(f"{name}.{image_type}")
 
-create_image("test_image", "png", 1000, 1000)
+create_image("test_image", "png", 8000, 8000)

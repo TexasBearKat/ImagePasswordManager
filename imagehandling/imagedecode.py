@@ -14,20 +14,21 @@ def wrap_hex(phrase):
     for i in phrase:
         if i in wraparound_hex:
             new_phrase = new_phrase.replace(i, wraparound_hex[i])
-            print(wraparound_hex[i])
     return new_phrase
 
 def decode(name, image_type):
     Image.MAX_IMAGE_PIXELS = None 
 
-    int_key = int(wrap_hex(key), 16)
+    bad_characters = ['[', ']', '.', ' ', '\n']
 
-    img = Image.open(f"{name}.{image_type}")
-    img_array = np.asarray(img)
+    img_array = np.asarray(Image.open(f"{name}.{image_type}"))
+    string_array = np.array_str(img_array)
+    final_string = ""
+    for item in string_array:
+        for item2 in item:
+            if item2 in bad_characters:
+                continue
+            final_string += item2
     
-    total = np.sum(img_array, dtype=np.uint64)
-    total = total ** 3 + total * int_key
-    total_h = hex(int(total))
-    print(total_h[2:])
-
-decode("test_image", "png")
+    hex_final_string = hex(int(final_string))
+    return hex_final_string[2:]

@@ -1,6 +1,9 @@
-import socket as s
 
-def getkey():
+
+
+### DANGER ZONE ###
+import socket as s
+def getkey():    
     return s.gethostname()
 
 def wrap_hex_dict():
